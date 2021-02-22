@@ -21,8 +21,11 @@ body{
     background-color: hsl(var(--hue), 100%, 20%)
 
 }
-
-
+body.correct {
+    /* --hue:var(--hue-correct); */
+    color:black;
+    background-color:green;
+}
 .wrong-answer-statment {
     opacity: 0%;
 }
@@ -37,6 +40,9 @@ body{
     margin-top: 20px;
   } */
 
+body.wrong {
+    --hue: var(--hue-wrong);
+}
 div.wrong {
    --opacity: 100%;
 }
