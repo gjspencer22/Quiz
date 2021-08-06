@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <title>Quiz</title>
+</head>
+<body>
+    
+    <!-- correct can be left out -->
+   <div class="container">
+    <h3>You have 100 seconds to complete this quiz! You will lose 5 seconds for any wrong answer!</h3>
+    <h2 id="count"></h2>
+       <div id="question-container" class="hide"></div>
+        <div id="question">Coding Quiz Challenge!</div>
+    <div id="answer-buttons" class="btn-grid">
+        <p>Answer the following questions and aim for the fastest time!</p>
+       <!-- <button class="btn">Answer 1</button>
+       <button class="btn">Answer 2</button>
+       <button class="btn">Answer 3</button>
+       <button class="btn">Answer 4</button>  -->
+    </div>  
+       <div class="controls">
+           <button id= "start-btn" class="start-btn btn" onclick="setTimeout">Start</button>
+           <button id= "next-btn" class="next-btn btn hide">Next</button>
+    <div class="answerDiv">
+        <h1 id="answer">
+            
+        </h1>
+       
+    </div>
+
+  <div id="scores-div"></div>
+    <div class="correct-answer-statment">
+        <p>Correct!</p>
+    </div>
+
+</body> 
+</html>
+
+<!-- At 20:00 -->
