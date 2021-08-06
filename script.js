@@ -7,6 +7,7 @@ const answerButtonsElement = document.getElementById
     ('answer-buttons')
 
 let shuffledQuestions, currentQuestionIndex
+var quizRunning = false;
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -15,38 +16,14 @@ nextButton.addEventListener('click', () => {
 })
 
 
-// let scoresDiv = document.getElementById("scores-div");
-
-// function setTime() {
-//     displayQuestions();
-//     let timerInterval = setInterval(function () {
-//         secondsLeft--;
-//         timer.textContent = "";
-//         timer.textContent = "Time: " + secondsLeft;
-//         if (secondsLeft <= 0 || questionCount === questions.length) {
-//             clearInterval(timerInterval);
-//             captureUserScore();
-//         }
-//     }, 1000);
-// }
-
-
-function correct() {
-    document.getElementById("answer").textContent ="Correct!"
-}
-function incorrect() {
-    document.getElementById("answer").textContent ="Incorrect! :("
-    count = count -1;
-}
-
 
 function startGame() {
+    quizRunning = true;
     startButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
     setNextQuestion()
-    // setInterval();
 }
 
 function setNextQuestion() {
@@ -68,33 +45,22 @@ function showQuestion(question) {
     })
 
 }
+
+
 var count = 100;
-var btn = document.getElementById('start-btn');
+var quizRunning = false
 
-
-    btn.addEventListener("click", function () {
+var interval = setInterval(function () {
+    if (quizRunning) {  //the interval will keep running... but this function won't DO anything until we set quizRunning to true!
         document.getElementById('count').innerHTML = "Time left:" + count;
-    count--;
-    if (count <= 0) {
-        clearInterval(interval);
-        document.getElementById('count').innerHTML = 'Out of time!';
-        alert("You're out of time!");
-     }
-    }, 1000);
-
-
-// var interval = setInterval(function () {
-    
-//     document.getElementById('count').innerHTML = "Time left:" + count;
-//     count--;
-//     if (count <= 0) {
-//         clearInterval(interval);
-//         document.getElementById('count').innerHTML = 'Out of time!';
-//         alert("You're out of time!");
-//     }
-// }, 1000);
-
-
+        count--;
+        if (count <= 0) {
+            clearInterval(interval);
+            document.getElementById('count').innerHTML = 'Out of time!';
+            alert("You're out of time!");
+        }
+    }
+}, 1000);
 
 
 function resetState() {
@@ -102,6 +68,8 @@ function resetState() {
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild
             (answerButtonsElement.firstChild)
+            document.getElementById("answer").textContent = ""
+            
     }
 }
 function selectAnswer(e) {
@@ -120,12 +88,21 @@ function selectAnswer(e) {
     nextButton.classList.remove('hide')
 }
 
+function correctAnswer() {
+   
+    document.getElementById("answer").textContent = "Correct!"
+}
+function incorrect() {
+    document.getElementById("answer").textContent = ""
+    document.getElementById("answer").textContent = "Incorrect! :("
+    count = count - 1;
+}
 
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
-        element.classList.add('correct')
-        correct();
+        element.classList.add('correct'),
+            correctAnswer();
     }
     else {
         element.classList.add('wrong')
@@ -147,30 +124,34 @@ const questions = [
             { text: 'All of the Above', correct: true }
 
         ]
-    },
-    {
-        question: 'HTML is a graphical design tool used to develop web pages that are displayed with a browser.',
-        answers: [
+    }
+    // {
+    //     question: 'Inside which HTML element do we put the JavaScript?',
+    //     answers: [
 
-            { text: 'True', correct: false },
-            { text: 'False', correct: true }
+    //         { text: '<scripting>', correct: false },
+    //         { text: '<script>', correct: true },
+    //         { text: '<style>', correct: false },
+    //         { text: '<muffins>', correct: false }
 
-        ]
-    },
+    //     ]
+    // },
 
-    {
-        question: 'What is 3+2?',
-        answers: [
-            { text: '5', correct: true },
-            { text: '22', correct: false }
-        ]
-    },
+    // {
+    //     question: 'How do you create a function in JavaScript?',
+    //     answers: [
+    //         { text: 'function myFunction()', correct: true },
+    //         { text: 'function = myFunction()', correct: false },
+    //         { text: 'function: myFunction()', correct: false },
+    //         { text: 'function> myFunction()', correct: false }
+    //     ]
+    // },
 
 
 ]
 const lastQuestion = questions.length - 1;
 
-score = count; 
+score = count;
 console.log(score);
 
 
