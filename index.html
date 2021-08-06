@@ -9,8 +9,11 @@
     <title>Quiz</title>
 </head>
 <body>
+    
     <!-- correct can be left out -->
    <div class="container">
+    <h1>You have 100 seconds to complete this quiz!</h1>
+    <h2 id="count"></h2>
        <div id="question-container" class="hide"></div>
         <div id="question">Coding Quiz Challenge!</div>
     <div id="answer-buttons" class="btn-grid">
@@ -21,14 +24,15 @@
        <button class="btn">Answer 4</button>  -->
     </div>  
        <div class="controls">
-           <button id= "start-btn" class"start-btn btn">Start</button>
-           <button id= "next-btn" class"next-btn btn hide">Next</button>
-    <div class="wrong-answer-statment">
-        <p>Wrong!</p>
-        <h1>Try again!</h1>
+           <button id= "start-btn" class="start-btn btn">Start</button>
+           <button id= "next-btn" class="next-btn btn hide">Next</button>
+    <div class="answerDiv">
+        <h1 id="answer">
+            
+        </h1>
+       
     </div>
-    <input id="view-scores" type="button" value="View Scores">
-  <span id="timer">Time: 0</span>
+    <button type="button" onclick= window.open(window.location) = "scores.html">View Scores</button>
   <div id="scores-div"></div>
     <div class="correct-answer-statment">
         <p>Correct!</p>
